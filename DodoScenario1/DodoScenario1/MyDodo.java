@@ -310,8 +310,12 @@ public class MyDodo extends Dodo
             move(); 
         }
     }
+    
+    
+    public boolean validCoordinates(int x, int y) {
+        return x >= 0 && x < getWorld().getWidth() && y >= 0 && y < getWorld().getHeight();
+    }
+
 }
-
-
 
 
