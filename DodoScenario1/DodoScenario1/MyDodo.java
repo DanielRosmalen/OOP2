@@ -331,7 +331,18 @@ public class MyDodo extends Dodo
         return count;
     }
     
+    public void layTrailOfEggs(int n) {
+        int eggsLayed = 0;
+            while (n > eggsLayed) { 
+            layEgg();                         
+            eggsLayed++;                 
+            
+            if (n > eggsLayed) {
+                move();
+            }
+        }
     
+    }
     
 }
 
