@@ -316,6 +316,23 @@ public class MyDodo extends Dodo
         return x >= 0 && x < getWorld().getWidth() && y >= 0 && y < getWorld().getHeight();
     }
 
+    public int countEggsInRow() {
+        int count = 0;
+        while (!borderAhead()) {
+            if (onEgg()) {
+                count++;
+            }
+            move();
+        }
+        if (onEgg()) {
+            count++;
+        }
+        goBackToStartOfRowAndFaceBack();
+        return count;
+    }
+    
+    
+    
 }
 
 
