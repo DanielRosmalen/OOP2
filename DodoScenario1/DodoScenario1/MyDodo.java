@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  *
  * @author Sjaak Smetsers & Renske Smetsers-Weeda
@@ -33,6 +33,7 @@ public class MyDodo extends Dodo
     }
 
     public void climbOverFence() {
+        if (fenceAhead()) {
         turnLeft();
         move();
         turnRight();
@@ -41,6 +42,7 @@ public class MyDodo extends Dodo
         turnRight();
         move();
         turnLeft();
+    }
     }
     
     public boolean grainAhead() {
@@ -342,6 +344,44 @@ public class MyDodo extends Dodo
             }
         }
     
+    }
+    
+    public void countAllEggsInWorld() {
+        int total = 0;
+        int row = 0;
+        while (row < getWorld().getHeight()) {
+            goToLocation(0, row);
+            setDirection(EAST);
+            row++;
+            total = total + countEggsInRow();
+        }
+        System.out.println(total + " eieren in deze wereld.");
+        goToLocation(0, 0);
+        setDirection(EAST);
+    }
+    
+    public void highestEggsInRow() {
+        ArrayList<Integer> highestRows = new ArrayList<Integer>();
+        int eggsInRow = 0;
+        int maxEggs = 0;
+        int row = 0;
+        while (row < getWorld().getHeight()) {
+            goToLocation(0, row);
+            setDirection(EAST);
+            eggsInRow = countEggsInRow();
+            if (maxEggs < eggsInRow) {
+                maxEggs = eggsInRow;
+                highestRows.clear();
+                highestRows.add(row);
+            } else if (eggsInRow == maxEggs) {
+                highestRows.add(row);
+            }
+            row++;
+        }
+        
+        System.out.println("Deze rijen: " + highestRows + " hebben de hoogste aantallen eieren.");
+        goToLocation(0, 0);
+        setDirection(EAST);
     }
     
 }
