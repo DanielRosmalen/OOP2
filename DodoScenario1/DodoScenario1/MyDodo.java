@@ -410,6 +410,24 @@ public class MyDodo extends Dodo
         }
     }
     
+    public void layEggPyramid() {
+        int startX = getX();
+        int startY = getY();
+        int row = startY;
+            while (row < getWorld().getHeight()) {
+                int offset = row - startY;
+                int startColumn = startX - (offset);
+                int endColumn = startX + (offset);
+                if (startColumn < 0 || endColumn >= getWorld().getWidth()) {
+                    break;
+                }
+                goToLocation(startX - (offset), row);
+                setDirection(EAST);
+                layTrailOfEggs(2 * (offset) + 1);
+                row++;
+            }
+    }
+    
 }
 
 
