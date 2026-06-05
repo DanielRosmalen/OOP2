@@ -339,7 +339,7 @@ public class MyDodo extends Dodo
             layEgg();                         
             eggsLayed++;                 
             
-            if (n > eggsLayed) {
+            if (n > eggsLayed && !borderAhead()) {
                 move();
             }
         }
@@ -392,6 +392,20 @@ public class MyDodo extends Dodo
             goToLocation(startX, row);
             setDirection(EAST);
             layTrailOfEggs(row - startY + 1);
+            row++;
+        }
+    }
+    
+    public void layEggPatternDouble() {
+        int startX = getX();
+        int startY = getY();
+        int row = startY;
+        int eggs = 1;
+        while (row < getWorld().getHeight()) {
+            goToLocation(startX, row);
+            setDirection(EAST);
+            layTrailOfEggs(eggs);
+            eggs = eggs * 2;
             row++;
         }
     }
