@@ -384,6 +384,18 @@ public class MyDodo extends Dodo
         setDirection(EAST);
     }
     
+    public void layEggPattern() {
+        int startX = getX();
+        int startY = getY();
+        int row = startY;
+        while (row < getWorld().getHeight()) {
+            goToLocation(startX, row);
+            setDirection(EAST);
+            layTrailOfEggs(row - startY + 1);
+            row++;
+        }
+    }
+    
 }
 
 
