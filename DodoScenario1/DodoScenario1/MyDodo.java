@@ -346,7 +346,7 @@ public class MyDodo extends Dodo
     
     }
     
-    public void countAllEggsInWorld() {
+    public int countAllEggsInWorld() {
         int total = 0;
         int row = 0;
         while (row < getWorld().getHeight()) {
@@ -358,6 +358,7 @@ public class MyDodo extends Dodo
         System.out.println(total + " eieren in deze wereld.");
         goToLocation(0, 0);
         setDirection(EAST);
+        return total;
     }
     
     public void highestEggsInRow() {
@@ -426,6 +427,11 @@ public class MyDodo extends Dodo
                 layTrailOfEggs(2 * (offset) + 1);
                 row++;
             }
+    }
+    
+    public double averagePerRow() {
+        double total = countAllEggsInWorld();
+        return total / getWorld().getHeight();
     }
     
 }
