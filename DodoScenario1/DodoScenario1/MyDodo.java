@@ -434,6 +434,39 @@ public class MyDodo extends Dodo
         return total / getWorld().getHeight();
     }
     
+    
+    public void addParityBitsRows() {
+        int row = 0;
+        while (row < getWorld().getHeight()) {
+            goToLocation(0, row);
+            setDirection(EAST);
+            int count = countEggsInRow();
+            if (count % 2 != 0) {
+                goToLocation(getWorld().getWidth() - 1, row);
+                layGoldEgg();
+            }
+            row++;
+        }
+    }
+    
+    public void addParityBitsCol() {
+        int col = 0;
+        while (col < getWorld().getWidth()) {
+            goToLocation(col, 0);
+            setDirection(SOUTH);
+            int count = countEggsInRow();
+            if (count % 2 != 0) {
+                goToLocation(col, getWorld().getHeight() - 1);
+                layGoldEgg();
+            }
+            col++;
+        }
+    }
+    
+    public void addParityBits() {
+        addParityBitsRows();
+        addParityBitsCol();
+    }
 }
 
 

@@ -71,6 +71,10 @@ public abstract class Dodo extends Actor
         getWorld().addObject( new BlueEgg (), getX (), getY () );
     }
     
+    public void layGoldEgg() {
+        getWorld().addObject( new GoldenEgg (), getX (), getY () );
+    }
+    
     public Egg getEgg() {
         return getActor( Egg.class );
     }
