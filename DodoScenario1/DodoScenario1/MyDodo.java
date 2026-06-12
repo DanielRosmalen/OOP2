@@ -467,6 +467,71 @@ public class MyDodo extends Dodo
         addParityBitsRows();
         addParityBitsCol();
     }
+    
+    
+    public void genericAddParityBitsRow() {
+        turnRight();
+        while (!borderAhead()) {
+            turnLeft();
+        int count = countEggsInRow();
+        if (count % 2 != 0) {
+            while (!borderAhead()) {
+                move();
+            }
+            if (!onEgg()) {
+            layGoldEgg();
+        }
+            goBackToStartOfRowAndFaceBack();
+        }   
+        turnRight();
+        move();
+        }
+        turnLeft();
+        int count = countEggsInRow();
+        if (count % 2 != 0) {
+        while (!borderAhead()) {
+            move();
+        }
+        if (!onEgg()) {
+            layGoldEgg();
+        }
+        goBackToStartOfRowAndFaceBack();
+    }
+    }
+    
+    public void genericAddParityBitsCol() {
+        while (!borderAhead()) {
+            turnLeft();
+        int count = countEggsInRow();
+        if (count % 2 != 0) {
+            while (!borderAhead()) {
+                move();
+            }
+            if (!onEgg()) {
+            layGoldEgg();
+        }
+            goBackToStartOfRowAndFaceBack();
+        }   
+        turnRight();
+        move();
+        }
+        turnLeft();
+        int count = countEggsInRow();
+        if (count % 2 != 0) {
+        while (!borderAhead()) {
+            move();
+        }
+        if (!onEgg()) {
+            layGoldEgg();
+        }
+        goBackToStartOfRowAndFaceBack();
+        }   
+    }
+    
+    public void genericAddParityBits() {
+        genericAddParityBitsRow();
+        genericAddParityBitsCol();
+    }
 }
 
 
