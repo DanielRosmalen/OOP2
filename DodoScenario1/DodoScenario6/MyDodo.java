@@ -76,6 +76,29 @@ public class MyDodo extends Dodo
         printCoordinatesOfEgg(egg);
     }
     }   
+    
+    public SurpriseEgg getMostValuableEgg() {
+    List<SurpriseEgg> lijst = makeListOfSurpriseEggs();
+    SurpriseEgg maxEgg = null;
+    int maxValue = -1;
+    for (SurpriseEgg egg : lijst) {
+        if (egg.getValue() > maxValue) {
+            maxValue = egg.getValue();
+            maxEgg = egg;
+        }
+    }
+    System.out.println("Meest waardevolle ei: waarde=" + maxValue + " x=" + maxEgg.getX() + " y=" + maxEgg.getY());
+    return maxEgg;
+}
+
+public double averageEggValue() {
+    List<SurpriseEgg> lijst = makeListOfSurpriseEggs();
+    int total = 0;
+    for (SurpriseEgg egg : lijst) {
+        total = total + egg.getValue();
+    }
+    return (double) total / lijst.size();
+}
 
 
     public boolean validCoordinates(int x, int y) {
