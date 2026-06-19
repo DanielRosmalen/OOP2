@@ -100,6 +100,17 @@ public double averageEggValue() {
     return (double) total / lijst.size();
 }
 
+public void moveRandomly() {
+    int nrOfStepsTaken = 0;
+        while (nrOfStepsTaken < Mauritius.MAXSTEPS) {
+            setDirection(randomDirection());
+        if (canMove()) {
+            move();
+            nrOfStepsTaken++;
+        }
+    }
+}
+
 
     public boolean validCoordinates(int x, int y) {
         return x >= 0 && x < getWorld().getWidth() && y >= 0 && y < getWorld().getHeight();
