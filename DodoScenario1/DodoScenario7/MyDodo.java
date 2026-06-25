@@ -128,11 +128,15 @@ public class MyDodo extends Dodo
         }
     }
     
+    public int getDistance(Egg egg) {
+        return Math.abs(egg.getX() - getX()) + Math.abs(egg.getY() - getY());
+    }
+    
     public Egg getNearestEgg(List<Egg> lijst) {
     Egg nearestEgg = null;
     int minDistance = Integer.MAX_VALUE;
     for (Egg egg : lijst) {
-        int distance = Math.abs(egg.getX() - getX()) + Math.abs(egg.getY() - getY());
+        int distance = getDistance(egg);
         if (distance < minDistance)   {
             minDistance = distance;
             nearestEgg = egg;
@@ -145,7 +149,7 @@ public class MyDodo extends Dodo
         Egg bestEgg = null;
         double bestScore = -1;
             for (Egg egg : lijst) {
-                int distance = Math.abs(egg.getX() - getX()) + Math.abs(egg.getY() - getY());
+                int distance = getDistance(egg);
                 int value; 
                 if (egg instanceof GoldenEgg && distance <= 10) {
                     value = 5;
