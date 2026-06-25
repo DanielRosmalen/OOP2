@@ -26,7 +26,7 @@ public class MyDodo extends Dodo
             List<Egg> lijst = getListOfEggsInWorld();
             if (lijst.size() > 0) {
                 Egg nearest = getBestEgg(lijst);
-                int distance = Math.abs(nearest.getX() - getX()) + Math.abs(nearest.getY() - getY());
+                int distance = getDistance(nearest);
                 if (distance <= Mauritius.MAXSTEPS - myNrOfStepsTaken) {
                 myNrOfStepsTaken += distance;
                 pickUpNearestEggInList();
